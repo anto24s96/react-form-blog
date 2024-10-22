@@ -5,7 +5,7 @@ const Form = () => {
     // State per memorizzare la lista di articoli del blog
     const [blog, setBlog] = useState([]);
 
-    // Dati di default per un nuovo blog (solo il titolo per ora)
+    // Dati di default per un nuovo blog
     const defaultBlogData = {
         title: "",
     };
@@ -16,13 +16,15 @@ const Form = () => {
     // Funzione per gestire il submit del form
     const handleSubmit = (e) => {
         e.preventDefault();
-        setBlog((array) => [...array, blogData]); // Aggiungo l'articolo alla lista dei blog
-        setBlogData(defaultBlogData); // Resetta il form dopo l'invio
+        // Aggiungo l'articolo alla lista dei blog
+        setBlog((array) => [...array, blogData]);
+        //Resetto il campo input
+        setBlogData(defaultBlogData);
     };
 
-    // Funzione per rimuovere un articolo dal blog, dato l'indice
+    // Funzione per rimuovere un articolo dal blog tramite indice
     const removeBlog = (indexToDelete) => {
-        setBlog((array) => array.filter((_, i) => i !== indexToDelete)); // Filtra fuori l'articolo da rimuovere
+        setBlog((array) => array.filter((_, i) => i !== indexToDelete));
     };
 
     // Funzione per aggiornare lo stato del form man mano che l'utente digita
