@@ -8,6 +8,8 @@ const Form = () => {
     // Dati di default per un nuovo blog
     const defaultBlogData = {
         title: "",
+        content: "",
+        author: "",
     };
 
     // State per memorizzare i dati dell'articolo corrente in fase di creazione
@@ -48,22 +50,55 @@ const Form = () => {
                         className="input-field"
                     />
                 </div>
+                <div className="form-element">
+                    <label htmlFor="blog-content">Descrizione:</label>
+                    <textarea
+                        id="blog-content"
+                        value={blogData.content}
+                        rows="10"
+                        cols="50"
+                        placeholder="Inserisci una descrizione per il Blog..."
+                        onChange={(e) =>
+                            changeBlogData("content", e.target.value)
+                        }
+                        className="input-field"
+                    />
+                </div>
+                <div className="form-element">
+                    <label htmlFor="blog-author">Autore:</label>
+                    <input
+                        id="blog-author"
+                        type="text"
+                        value={blogData.author}
+                        placeholder="Inserisci l'autore"
+                        onChange={(e) =>
+                            changeBlogData("author", e.target.value)
+                        }
+                        className="input-field"
+                    />
+                </div>
                 <button type="submit" className="submit-btn">
                     Aggiungi
                 </button>
             </form>
 
             <h2 className="blog-list-title">Blogs:</h2>
-            <ul className="blog-list">
-                {blog.map((post, index) => (
-                    <li key={index} className="blog-item">
-                        <span className="blog-title">{post.title}</span>
-                        <div className="delete-btn">
-                            <Trash onClick={() => removeBlog(index)} />
-                        </div>
-                    </li>
-                ))}
-            </ul>
+            <div style={{ overflowY: "auto", height: "200px" }}>
+                <ul className="blog-list">
+                    {blog.map((post, index) => (
+                        <li key={index} className="blog-item">
+                            <span className="blog-title">
+                                Titolo: {post.title}
+                            </span>
+                            <p>Descrizione: {post.content}</p>
+                            <div>Autore: {post.author}</div>
+                            <span className="delete-btn">
+                                <Trash onClick={() => removeBlog(index)} />
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };

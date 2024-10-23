@@ -7,6 +7,7 @@
 
 .container {
     min-width: 600px;
+    max-height: 850px;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -67,11 +68,11 @@ label {
 
 .blog-item {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     padding: 10px;
     border-bottom: 1px solid #ddd;
     margin-bottom: 10px;
+    gap: 15px;
 }
 
 .blog-title {
@@ -80,14 +81,17 @@ label {
 }
 
 .delete-btn {
+    align-self: center;
     font-size: 25px;
     color: white;
     background-color: red;
     display: flex;
+    max-width: fit-content;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 2rem;
 }
 
 .delete-btn:hover {
